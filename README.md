@@ -7,9 +7,11 @@
 * How to get them to flock
 * Vectors
 
+## Stuff to know
 ### Vectors
 Vectors have a magnitude and direction. A vector is a line segment, the magnitude is length between its tail and its head and direction is from it's tail to its head. 
 
+## Work
 ### Latest Update 10/11/2024
 Somehow pygame is now working without AppKit or I may have disabled AppKit somehow. I wouldn't know; I am relatively new to coding. So I will be progressing the project now.
 #### Game loop
