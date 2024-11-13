@@ -14,8 +14,9 @@ Vectors have a magnitude and direction. A vector is a line segment, the magnitud
 ## Work
 ### Latest Update 10/11/2024
 Somehow pygame is now working without AppKit or I may have disabled AppKit somehow. I wouldn't know; I am relatively new to coding. So I will be progressing the project now.
-#### Game loop
-*Done*
+#### Boids point different directions and go in that direction
+This will require some geometry and vector knowledge.
+#### *Done* Game loop
 Every ten seconds render updated progress of the movement of boids. Update and render need to be seperate. 
 
 ### Update 29/09/2024
