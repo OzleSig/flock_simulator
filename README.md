@@ -15,7 +15,8 @@ Vectors have a magnitude and direction. A vector is a line segment, the magnitud
 ### Latest Update 10/11/2024
 Somehow pygame is now working without AppKit or I may have disabled AppKit somehow. I wouldn't know; I am relatively new to coding. So I will be progressing the project now.
 #### Game loop
-Every ten seconds render updated progress of the movement of boids. Update and render need to be seperate.
+*Done*
+Every ten seconds render updated progress of the movement of boids. Update and render need to be seperate. 
 
 ### Update 29/09/2024
 Pygame is not working on macs without AppKit. So I will be taking a break from the project until I learn more about classes and find another way to render the simulator.

@@ -12,8 +12,7 @@ run = True
 t1 = 5
 t2 = 15
 t3 = 10
-time1 = time.time()
-wait_time = 10 #in seconds
+wait_time = 1 #in seconds
 boids = 20
 boids_pos = []
 for x in range(boids):
@@ -40,14 +39,13 @@ def draw_boid(x,y):
 def flock_loop():
     global run
     global boids
-    global time1
+    time1 = time.time()
     while run:
         update()
         time2 = time.time()
-        print("ooo")
-        if (time2 - time1)%10 == 0:
-            print("hi")
+        if (time2 - time1)>=wait_time:
             render()
+            time1 = time.time()
         for event in pygame.event.get():
             if event.type ==pygame.QUIT:
                 run = False
