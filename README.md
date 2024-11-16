@@ -10,6 +10,44 @@
 ## Stuff to know
 ### Vectors
 Vectors have a magnitude and direction. A vector is a line segment, the magnitude is length between its tail and its head and direction is from it's tail to its head. 
+### Rotating vectors/a triangle
+Formula Overview
+
+Given three points:
+- `P1(x1, y1)`
+- `P2(x2, y2)`
+- `P3(x3, y3)`
+
+We calculate the angle of rotation between the vectors:
+- `v1 = (x2 - x1, y2 - y1)`  
+- `v2 = (x3 - x1, y3 - y1)`
+
+Steps:
+1. **Calculate the dot product:**
+   \[
+   \text{dot\_product} = (x2 - x1)(x3 - x1) + (y2 - y1)(y3 - y1)
+   \]
+
+2. **Calculate the magnitudes:**
+   \[
+   \|v1\| = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}
+   \]
+   \[
+   \|v2\| = \sqrt{(x3 - x1)^2 + (y3 - y1)^2}
+   \]
+
+3. **Calculate the angle in radians:**
+   \[
+   \cos(\theta) = \frac{\text{dot\_product}}{\|v1\| \|v2\|}
+   \]
+   \[
+   \theta = \cos^{-1}(\cos(\theta))
+   \]
+
+4. **Convert to degrees:**
+   \[
+   \text{angle (degrees)} = \theta \times \frac{180}{\pi}
+   \]
 
 ## Work
 ### Latest Update 10/11/2024

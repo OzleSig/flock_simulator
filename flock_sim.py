@@ -12,7 +12,7 @@ run = True
 t1 = 5
 t2 = 15
 t3 = 10
-wait_time = 1 #in seconds
+wait_time = 0.5 #in seconds
 boids = 20
 boids_pos = []
 for x in range(boids):
