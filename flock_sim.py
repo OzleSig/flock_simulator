@@ -3,7 +3,7 @@ from pygame.locals import *
 pygame.init()
 import time
 import math
-from random import randint
+import random
 
 windowsize = 800
 white = (255,255,255)
@@ -15,6 +15,9 @@ boids = 20
 boids_pos = []
 unit_vectors = []
 vector_mag = 10
+velocity = []
+for i in range(boids):
+    velocity.append(random.uniform(0.00001, 0.004))
 
 def vector(x,y):
     magnitude = math.sqrt((x*x)+(y*y))
@@ -25,13 +28,13 @@ def vector(x,y):
 def vector_adj():
     global boids_pos
     for i in range(boids):
-        boids_pos.append([randint(-windowsize, windowsize), randint(-windowsize, windowsize)])
+        boids_pos.append([random.randint(-windowsize, windowsize), random.randint(-windowsize, windowsize)])
         x = boids_pos[i][0]
         y = boids_pos[i][1]
         boids_pos[i] = vector(x,y)
         unit_vectors.append(boids_pos[i])
-        x_adj = randint(0, windowsize)
-        y_adj = randint(0, windowsize)
+        x_adj = random.randint(0, windowsize)
+        y_adj = random.randint(0, windowsize)
         x = x_adj + boids_pos[i][0]*vector_mag
         y = y_adj + boids_pos[i][1]*vector_mag
         boids_pos[i] = [x,y]
@@ -45,14 +48,14 @@ def update():
     for i, coord in enumerate(boids_pos):
         coord[0] = coord[0] % windowsize
         coord[1] = coord[1] % windowsize
-        coord[0]+= unit_vectors[i][0]*0.001
-        coord[1]+= unit_vectors[i][1]*0.001
+        coord[0]+= unit_vectors[i][0]*velocity[i]
+        coord[1]+= unit_vectors[i][1]*velocity[i]
                 
 
 def draw_boid():
-    for i, unit_v in enumerate(boids_pos):
-        x = unit_v[0]
-        y = unit_v[1]
+    for i, coord in enumerate(boids_pos):
+        x = coord[0]
+        y = coord[1]
         x_adj = x + unit_vectors[i][0]*vector_mag
         y_adj = y + unit_vectors[i][1]*vector_mag
         pygame.draw.line(surface, black, (x_adj,y_adj), (x,y))
@@ -69,7 +72,6 @@ def flock_loop():
             render()
             time1 = time.time()
         for event in pygame.event.get():
-            if event.type ==pygame.QUIT:
+            if event.type == pygame.QUIT:
                 run = False
 flock_loop()
-print(boids_pos)
