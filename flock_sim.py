@@ -5,19 +5,21 @@ import time
 import math
 import random
 
-windowsize = 800
+windowsize = 200
 white = (255,255,255)
 black = (0,0,0)
 surface = pygame.display.set_mode((windowsize,windowsize))
 run = True
 wait_time = 1/60 #in seconds
-boids = 20
+boids = 2
 boids_pos = []
 unit_vectors = []
-vector_mag = 10
+vector_mag = 20
 velocity = []
 for i in range(boids):
-    velocity.append(random.uniform(0.00001, 0.004))
+    velocity.append(random.uniform(0.001, 0.004))
+visibility = 50
+align_fac = 0.3
 
 def vector(x,y):
     magnitude = math.sqrt((x*x)+(y*y))
@@ -60,6 +62,20 @@ def draw_boid():
         y_adj = y + unit_vectors[i][1]*vector_mag
         pygame.draw.line(surface, black, (x_adj,y_adj), (x,y))
 
+def visable_range():
+    for n1, main in enumerate(boids_pos):
+        x1 = main[0]
+        y1 = main[1]
+        for n2, neighbour in enumerate(boids_pos): 
+            x2 = neighbour[0]
+            y2 = neighbour[1]
+            if main != neighbour:
+                if math.sqrt(abs(x1-x2))**2 + math.sqrt(abs(y1-y2))**2 < math.sqrt(visibility**2):
+                    boids_pos[n1] = [(x1-x2)/2 + x1, (y1-y2)/2 + y1]
+                    boids_pos[n2] = [(x1-x2)/2 + x2, (y1-y2)/2 + y2]
+
+# 785-752, 54-51 = 
+
 def flock_loop():
     global run
     global boids
@@ -67,6 +83,7 @@ def flock_loop():
     vector_adj()
     while run:
         update()
+        visable_range()
         time2 = time.time()
         if (time2 - time1)>=wait_time:
             render()
