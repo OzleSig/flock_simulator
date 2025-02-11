@@ -62,8 +62,11 @@ Pygame is not working on macs without AppKit. So I will be taking a break from t
 #### First order of business
 Well, I have to make some polygons appear on the screen. So I need to create a screen and I need to create some polygons. The polygons should be randomly placed but equal in size and dimensions. I have seen arrow style flocks used so will copy that shape. They are aethetically pleasing. For now, I will create a white screen and black flocks.
 
+## Function purposes
+### TBC
+
 ## Glossary
 
 ### Magnitude
 ### Unit Vector
-### 
+### Velocity
